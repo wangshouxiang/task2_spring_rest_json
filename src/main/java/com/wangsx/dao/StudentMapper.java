@@ -11,9 +11,10 @@ public interface StudentMapper {
 			+ "create_at as createAt, update_at as updateAt from student "
 			+ "where student_id=#{id}")
 	public Student selectStudentById(int id);
-	
+
 	@Insert("insert into student(student_name,student_age,student_profession,create_at,update_at)"
 			+  "values(#{studentName},#{studentAge},#{studentProfession},#{createAt},#{updateAt})")
+	@Options(useGeneratedKeys=true, keyProperty="studentId")
 	public void insertStudent(Student student);
 	
 	@Delete("delete from student where student_id=#{id}")
